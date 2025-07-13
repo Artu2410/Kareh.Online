@@ -40,8 +40,8 @@ function cargarCarrito() {
         listaCarrito.appendChild(li);
         total += parseFloat(producto.precio) || 0;
     }
-    // Mostrar el total redondeado a 3 decimales
-    totalCarrito.textContent = total.toFixed(3);
+    // Mostrar el total redondeado a 2 decimales
+    totalCarrito.textContent = total.toFixed(2);
 }
 
 function pagar() {
@@ -61,7 +61,7 @@ function pagar() {
     sessionStorage.setItem('productos', JSON.stringify(carrito));
     sessionStorage.setItem('total', total.toFixed(3));
 
-    alert(`Total a pagar: $${total.toFixed(3)}`);
+    alert(`Total a pagar: $${total.toFixed(2)}`);
     window.location.href = "compra.html";
 }
 
