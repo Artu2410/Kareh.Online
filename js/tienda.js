@@ -59,7 +59,7 @@ function pagar() {
 
     // Guardar datos en sessionStorage
     sessionStorage.setItem('productos', JSON.stringify(carrito));
-    sessionStorage.setItem('total', total.toFixed(3));
+    sessionStorage.setItem('total', total.toFixed(2));
 
     alert(`Total a pagar: $${total.toFixed(2)}`);
     window.location.href = "compra.html";
@@ -69,4 +69,3 @@ function pagar() {
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('btnPagar').addEventListener('click', pagar);
 });
-

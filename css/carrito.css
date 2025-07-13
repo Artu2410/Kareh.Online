@@ -1,0 +1,79 @@
+#carrito {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: var(--radio-borde);
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: var(--sombra);
+  }
+  
+  #carrito h2 {
+    text-align: center;
+    color: var(--color-acento);
+    margin-bottom: 20px;
+  }
+  
+  #lista-carrito {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  #lista-carrito li {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: var(--radio-borde);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    color: var(--color-texto);
+  }
+  
+  #lista-carrito li button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.3s ease;
+  }
+  
+  #lista-carrito li button:hover {
+      background-color: #d32f2f;
+  }
+  
+  #total-carrito {
+    font-weight: bold;
+    color: var(--color-acento);
+  }
+  
+  #btnPagar, #vaciar-carrito {
+    background-color: #28a745;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-weight: bold;
+    margin: 10px;
+  }
+  
+  #vaciar-carrito {
+    background-color: #dc3545;
+  }
+    #btnPagar:hover, #vaciar-carrito:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+    }  
+    #vaciar-carrito:hover {
+        background-color: #c82333;
+        transform: translateY(-2px);
+      }

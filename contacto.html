@@ -22,6 +22,7 @@
     <nav class="nav">
       <ul>
         <li><a href="./index.html"><i class="fa-solid fa-house"></i></a></li>
+        <li><a href="./api_resenia.html">Reseñas</a></li>
         <li><a href="./productos.html">Productos</a></li>
         <li><a href="./contacto.html">Contacto</a></li>
         <li><a href="./ubicacion.html">Ubicación</a></li>
@@ -31,7 +32,7 @@
 
   <main>
     <section>
-      <h2 style="text-align: center;">Formulario de Contacto</h2>
+      <h2>Formulario de Contacto</h2>
       <form action="https://formspree.io/f/mjkyqbap" method="POST">
         <label for="nombre">Nombre completo:</label>
         <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required />
@@ -59,5 +60,16 @@
     </div>
     <p>© 2025 Kareh. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Custom Alert Modal -->
+  <div id="customAlertModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <p id="customAlertMessage"></p>
+      <button id="customAlertOkButton" class="modal-button">OK</button>
+    </div>
+  </div>
+
+  <script src="./js/common.js"></script> <!-- Archivo con showCustomAlert -->
 </body>
 </html>

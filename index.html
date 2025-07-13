@@ -24,6 +24,7 @@
     <nav class="nav">
       <ul>
         <li><a href="./index.html"><i class="fa-solid fa-house"></i></a></li>
+        <li><a href="./api_resenia.html">Reseñas</a></li>
         <li><a href="./productos.html">Productos</a></li>
         <li><a href="./contacto.html">Contacto</a></li>
         <li><a href="./ubicacion.html">Ubicación</a></li>
@@ -45,12 +46,25 @@
         <track src="./video/subtitulo.vtt" kind="subtitles" srclang="es" label="Español" default>
         Tu navegador no soporta la reproducción de video.
       </video>
-      
       </section>
 
     <section id="servicios">
       <h2>Servicios</h2>
       <p>Brindamos asesoramiento profesional y atención personalizada.</p>
+      <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 280px; text-align: center;">
+          <h3>Fisioterapia</h3>
+          <p>Programas de rehabilitación personalizados para recuperar la movilidad y reducir el dolor.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 280px; text-align: center;">
+          <h3>Terapia Ocupacional</h3>
+          <p>Ayudamos a nuestros pacientes a readaptarse a sus actividades diarias.</p>
+        </div>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 280px; text-align: center;">
+          <h3>Venta de Productos</h3>
+          <p>Amplio catálogo de productos de apoyo y rehabilitación de alta calidad.</p>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -62,6 +76,17 @@
     </div>
     <p>© 2025 Kareh. Todos los derechos reservados.</p>
   </footer>
-  <script src="./js/script.js"></script>
+
+  <!-- Custom Alert Modal -->
+  <div id="customAlertModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <p id="customAlertMessage"></p>
+      <button id="customAlertOkButton" class="modal-button">OK</button>
+    </div>
+  </div>
+
+  <script src="./js/common.js"></script> <!-- Archivo con showCustomAlert -->
+  <script src="./js/script.js"></script> <!-- Si tienes un script.js, asegúrate de que exista -->
 </body>
 </html>
