@@ -35,26 +35,51 @@
     <div class="producto_flex">
       <div class="item_flex">
         <h3>Andador con ruedas</h3>
-        <img src="./img/andador/51oNan7r7SL._AC_.jpg" width="60%">
-        <button>Comprar</button>
+        <img src="./img/andador/51oNan7r7SL._AC_.jpg" width="50%">
+        <button class="comprar" data-id="1" data-nombre="Producto 1" data-precio="10000">Comprar</button>
       </div>
 
       <div class="item_flex">
         <h3>Tripo con 4 apoyos</h3>
-        <img src="./img/baton 4 apoyos/baston-4-apoyos-base-pequena.webp" width="60%">
-        <button>Comprar</button>
+        <img src="./img/baton 4 apoyos/baston-4-apoyos-base-pequena.webp" width="50%">
+        <button class="comprar" data-id="2" data-nombre="Producto 2" data-precio="15000">Comprar</button>
       </div>
 
       <div class="item_flex">
         <h3>Faja</h3>
-        <img src="./img/faja/fr2-11-5d2386bd18fa7950b416490867673124-1024-1024.webp" width="60%">
-        <button>Comprar</button>
+        <img src="./img/faja/fr2-11-5d2386bd18fa7950b416490867673124-1024-1024.webp" width="50%">
+        <button class="comprar" data-id="3" data-nombre="Producto 3" data-precio="20000">Comprar</button>
       </div>
       <div class="item_flex">
         <h3>Silla de rueda deportiva</h3>
-        <img src="./img/silla de rueda deportiva/silla-de-ruedas-deportiva.jpg" width="60%">
-        <button>Comprar</button>
+        <img src="./img/silla de rueda deportiva/silla-de-ruedas-deportiva.jpg" width="50%">
+        <button class="comprar" data-id="4" data-nombre="Producto 4" data-precio="100000">Comprar</button>
       </div>
+
+      <div class="item_flex">
+        <h3>Conos</h3>
+        <img src="./img/conos/conos.png" width="50%">
+        <button class="comprar" data-id="5" data-nombre="Producto 5" data-precio="15000">Comprar</button>
+      </div>
+
+      <div class="item_flex">
+        <h3>Silla de rueda deportiva</h3>
+        <img src="./img/silla de rueda deportiva/silla-de-ruedas-deportiva.jpg" width="50%">
+        <button class="comprar" data-id="6" data-nombre="Producto 6" data-precio="200000">Comprar</button>
+      </div>
+
+      <div class="item_flex">
+        <h3>Kit Hand Grip</h3>
+        <img src="./img/hand grip/kit de hand grip.png" width="50%">
+        <button class="comprar" data-id="7" data-nombre="Producto 7" data-precio="10000">Comprar</button>
+      </div>
+
+      <div class="item_flex">
+        <h3>Tobilleras con velcro</h3>
+        <img src="./img/tobilleras con velcro/tobilleras negras con velcro.png" width="50%">
+        <button class="comprar" data-id="8" data-nombre="Producto 8" data-precio="15000">Comprar</button>
+      </div>
+
     </div>
   </main>
   <form action="./index.html" class="volver-form">
@@ -71,5 +96,9 @@
     </div>
     <p>© 2025 Kareh. Todos los derechos reservados.</p>
   </footer>
+
+  <button id="btnPagar">Pagar</button>
+  <button id="vaciar-carrito">vaciar</button>
+  <script src="./js/tienda.js"></script>
 </body>
 </html>
