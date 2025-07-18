@@ -1,71 +1,136 @@
-// Asigna evento clic a todos los botones con la clase "comprar" del HTML
-let botonesComprar = document.getElementsByClassName('comprar');
-   for (let i = 0; i < botonesComprar.length; i++) {
-     botonesComprar[i].addEventListener('click', agregarProducto);
-   }
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias a elementos del DOM
+    const botonesComprar = document.querySelectorAll('.comprar');
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalCarritoSpan = document.getElementById('total-carrito');
+    const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+    const btnPagar = document.getElementById('btnPagar');
 
-// Vacía carrito
-document.getElementById('vaciar-carrito').addEventListener('click', function() {
-     localStorage.removeItem('carrito');
-     cargarCarrito();
-});
+    // Inicializar el carrito desde sessionStorage o como un array vacío
+    let carrito = JSON.parse(sessionStorage.getItem('carrito')) || [];
 
-// Agrega productos al carrito
-function agregarProducto(event) {
-    let producto = {
-        id: event.target.getAttribute('data-id'),
-        nombre: event.target.getAttribute('data-nombre'),
-        precio: event.target.getAttribute('data-precio')
+    /**
+     * Guarda el estado actual del carrito en sessionStorage y actualiza la interfaz de usuario.
+     */
+    const guardarCarrito = () => {
+        sessionStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarDisplayCarrito(); // Vuelve a renderizar el carrito para reflejar los cambios
     };
 
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    carrito.push(producto);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    cargarCarrito();
-}
+    /**
+     * Calcula el total de los productos en el carrito y actualiza el display.
+     */
+    const calcularTotal = () => {
+        const total = carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
+        totalCarritoSpan.textContent = total.toFixed(2); // Formatear a 2 decimales para la visualización
+        sessionStorage.setItem('total', total.toFixed(2)); // Guardar el total para la página de compra
+    };
 
-function cargarCarrito() {
-    let listaCarrito = document.getElementById('lista-carrito');
-    let totalCarrito = document.getElementById('total-carrito');
-    listaCarrito.innerHTML = '';
-    totalCarrito.textContent = '0';
+    /**
+     * Renderiza la lista de productos en el carrito en el HTML.
+     */
+    const actualizarDisplayCarrito = () => {
+        listaCarrito.innerHTML = ''; // Limpiar la lista actual del carrito
 
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    let total = 0;
-   
-    for (let i = 0; i < carrito.length; i++) {
-        let producto = carrito[i];   
-        let li = document.createElement('li');
-        li.textContent = producto.nombre + ' - $' + producto.precio;
-        listaCarrito.appendChild(li);
-        total += parseFloat(producto.precio) || 0;
-    }
-    // Mostrar el total redondeado a 2 decimales
-    totalCarrito.textContent = total.toFixed(2);
-}
+        if (carrito.length === 0) {
+            listaCarrito.innerHTML = '<p>El carrito está vacío.</p>'; // Mostrar mensaje si está vacío
+        } else {
+            carrito.forEach(item => {
+                const li = document.createElement('li');
+                li.setAttribute('data-id', item.id); // Asignar el ID del producto al elemento de lista
 
-function pagar() {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                // Estructura HTML para cada ítem del carrito, incluyendo controles de cantidad
+                li.innerHTML = `
+                    <span>${item.nombre}: $${item.precio.toFixed(2)}</span>
+                    <div class="cantidad-control">
+                        <button class="disminuir-cantidad" data-id="${item.id}">-</button>
+                        <span class="cantidad-producto">${item.cantidad}</span>
+                        <button class="aumentar-cantidad" data-id="${item.id}">+</button>
+                    </div>
+                    <button class="eliminar-producto" data-id="${item.id}">X</button>
+                `;
+                listaCarrito.appendChild(li); // Añadir el ítem a la lista del carrito
+            });
+        }
+        calcularTotal(); // Recalcular el total cada vez que se actualiza el display
+    };
 
-    if (carrito.length === 0) {
-        alert("El carrito está vacío");
-        return;
-    }
+    // --- Event Listeners ---
 
-    let total = 0;
-    for (let i = 0; i < carrito.length; i++) {
-        total += parseFloat(carrito[i].precio) || 0;
-    }
+    /**
+     * Maneja el clic en los botones "Comprar" de los productos.
+     * Añade el producto al carrito o aumenta su cantidad si ya existe.
+     */
+    botonesComprar.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const id = e.target.dataset.id;
+            const nombre = e.target.dataset.nombre;
+            const precio = parseFloat(e.target.dataset.precio); // Convertir el precio a número
 
-    // Guardar datos en sessionStorage
-    sessionStorage.setItem('productos', JSON.stringify(carrito));
-    sessionStorage.setItem('total', total.toFixed(2));
+            const productoExistente = carrito.find(item => item.id === id);
 
-    alert(`Total a pagar: $${total.toFixed(2)}`);
-    window.location.href = "compra.html";
-}
+            if (productoExistente) {
+                productoExistente.cantidad++; // Si el producto ya está en el carrito, aumenta su cantidad
+            } else {
+                carrito.push({ id, nombre, precio, cantidad: 1 }); // Si es un producto nuevo, lo añade con cantidad 1
+            }
+            guardarCarrito(); // Guarda el carrito y actualiza la UI
+        });
+    });
 
-// Asignar el evento al botón (cuando el DOM esté listo)
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('btnPagar').addEventListener('click', pagar);
+    /**
+     * Maneja los clics dentro de la lista del carrito (delegación de eventos).
+     * Detecta si se hizo clic en un botón de aumentar, disminuir o eliminar.
+     */
+    listaCarrito.addEventListener('click', (e) => {
+        const target = e.target; // El elemento específico en el que se hizo clic
+        const id = target.dataset.id; // Obtener el ID del producto asociado al botón
+
+        if (target.classList.contains('aumentar-cantidad')) {
+            const item = carrito.find(p => p.id === id);
+            if (item) {
+                item.cantidad++; // Aumenta la cantidad del producto
+            }
+        } else if (target.classList.contains('disminuir-cantidad')) {
+            const item = carrito.find(p => p.id === id);
+            if (item && item.cantidad > 1) {
+                item.cantidad--; // Disminuye la cantidad si es mayor que 1
+            } else if (item && item.cantidad === 1) {
+                // Si la cantidad es 1 y se presiona disminuir, elimina el producto del carrito
+                carrito = carrito.filter(p => p.id !== id);
+            }
+        } else if (target.classList.contains('eliminar-producto')) {
+            // Elimina completamente el producto del carrito
+            carrito = carrito.filter(p => p.id !== id);
+        }
+        guardarCarrito(); // Guarda el carrito y actualiza la UI después de cualquier cambio
+    });
+
+    /**
+     * Maneja el clic en el botón "Vaciar Carrito".
+     * Elimina todos los productos del carrito.
+     */
+    vaciarCarritoBtn.addEventListener('click', () => {
+        carrito = []; // Vacía completamente el array del carrito
+        guardarCarrito(); // Guarda el carrito vacío y actualiza la UI
+    });
+
+    /**
+     * Maneja el clic en el botón "Pagar".
+     * Redirige a la página de compra si el carrito no está vacío.
+     */
+    btnPagar.addEventListener('click', () => {
+        if (carrito.length > 0) {
+            // El carrito ya se guarda automáticamente con guardarCarrito(),
+            // pero nos aseguramos de que los 'productos' para compra.js estén bien
+            sessionStorage.setItem('productos', JSON.stringify(carrito)); 
+            window.location.href = './compra.html'; // Redirige a la página de resumen de compra
+        } else {
+            alert('El carrito está vacío. Agrega productos antes de pagar.'); // Usa un modal personalizado en lugar de alert en producción
+        }
+    });
+
+    // --- Inicialización ---
+    // Cargar y mostrar el carrito al cargar la página por primera vez
+    actualizarDisplayCarrito();
 });

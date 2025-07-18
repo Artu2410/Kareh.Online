@@ -1,234 +1,59 @@
-/*
-Estilo para Fakestore con el Botón Comprar en aling buttom
-*/
-
-#fakestore-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
+.resenia {
+  text-align: center;
+  padding: 30px 20px;
+  max-width: 700px;
+  margin: 40px auto;
+  background-color: var(--color-fondo-blanco);
+  border-radius: var(--radio-borde-base);
+  box-shadow: 0 4px 10px var(--color-sombra);
 }
 
-/* Estilos para cada tarjeta */
-.card {
-  display: flex; 
-  flex-direction: column; /* aplica los elementos verticalmente */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 5px;
-  height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+.resenia h1 {
+  margin-bottom: 25px;
+  color: var(--color-acento);
 }
 
-.card:hover {
-  transform: translateY(-5px);
+#contenido {
+  background-color: var(--color-fondo-claro);
+  padding: 25px;
+  border-radius: var(--radio-borde-base);
+  margin-top: 30px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Sombra interna para el contenido de la reseña */
+  color: var(--color-texto-principal);
 }
 
-/* Estilos para la imagen del producto */
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
+#contenido img {
+  border-radius: 50%; /* Imágenes de perfil circulares */
+  border: 3px solid var(--color-acento); /* Borde acentuado */
   margin-bottom: 15px;
-  background: #f8f8f8;
-  border-radius: 5px 5px 0 0;
+  box-shadow: 0 2px 5px var(--color-sombra);
 }
 
-/* Estilos para el título del producto */
-.card-content h3 {
-  font-size: 1rem;
-  margin: 0 0 10px 0;
-  color: #333;
+#contenido p {
+  font-size: 1.1em;
+  margin: 8px 0;
+  line-height: 1.5;
 }
 
-/* Estilos para el precio */
-.card-content p {
-  font-size: 1.1rem;
-  color: #2a5d34;
+#contenido p:first-of-type {
   font-weight: bold;
-  margin: 0;
+  color: var(--color-acento);
 }
 
-/* Estilos para el contenido de la tarjeta */
-.card-content {
-  flex-grow: 1; /* Hace que este elemento ocupe todo el espacio disponible */
-  margin-bottom: 10px;
-  padding: 0 10px;
-}
-
-/* Estilos para el botón de compra */
-.comprar-btn {
-  background-color: #4CAF50;
+.btn-danger { /* Nombre de clase en tu HTML, aunque funcionalmente es un botón primario aquí */
+  background-color: var(--color-boton-primario);
   color: white;
+  padding: 12px 25px;
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: var(--radio-borde-base);
   cursor: pointer;
-  margin-top: auto; /* empuja el botón hacia la parte inferior */
-  transition: background-color 0.3s;
-  width: calc(100% - 10px);
-  margin: 10px 5px;
+  font-size: 1em;
   font-weight: bold;
+  transition: background-color var(--transicion-rapida), transform 0.2s ease;
+  margin-top: 30px;
 }
 
-.comprar-btn:hover {
-  background-color: #45a049;
-}
-
-/* Estilos para el modal del carrito */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex; /* Cambiado a flex para centrar */
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-contenido {
-  background-color: #f8f8f8;
-  /* margin: 10% auto; Eliminado, ya centrado con flex */
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  animation: modalopen 0.3s;
-}
-
-@keyframes modalopen {
-  from {opacity: 0; transform: translateY(-50px)}
-  to {opacity: 1; transform: translateY(0)}
-}
-
-.cerrar-modal {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.cerrar-modal:hover {
-  color: #333;
-}
-
-.modal-contenido h2 {
-  color: #2a5d34;
-  margin-top: 0;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
-
-#lista-carrito {
-  max-height: 300px;
-  overflow-y: auto;
-  margin: 20px 0;
-}
-
-.item-carrito {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  align-items: center;
-}
-
-.item-carrito span:first-child {
-  flex: 2;
-}
-
-.item-carrito span:last-child {
-  flex: 1;
-  text-align: right;
-  font-weight: bold;
-  color: #2a5d34;
-}
-
-/* Estilos para el botón de eliminar del carrito */
-.item-carrito .eliminar-producto {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
-    margin-left: 10px; /* Espacio entre precio y botón */
-}
-
-.item-carrito .eliminar-producto:hover {
-    background-color: #d32f2f;
-}
-
-
-#total-carrito {
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: right;
-  padding: 10px;
-  background-color: #e9f5eb;
-  border-radius: 4px;
-  margin: 10px 0;
-}
-
-.botones-carrito {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.botones-carrito button {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-#vaciar-carrito {
-  background-color: #f44336;
-  color: white;
-}
-
-#vaciar-carrito:hover {
-  background-color: #d32f2f;
-}
-
-#pagar {
-  background-color: #4CAF50;
-  color: white;
-}
-
-#pagar:hover {
-  background-color: #388e3c;
-}
-
-/* Estilos para el contador del carrito */
-.contador-carrito {
-  display: flex; /* Cambiado a flex para centrar contenido */
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #f44336;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  align-items: center;
-  justify-content: center;
-}
-
-.carrito-icono {
-  position: relative;
+.btn-danger:hover {
+  background-color: var(--color-acento-hover);
+  transform: translateY(-2px);
 }

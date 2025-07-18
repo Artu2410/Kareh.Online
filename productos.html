@@ -3,111 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos - Kareh Tienda Online</title>
+  <meta name="description" content="Descubre el catálogo completo de productos de rehabilitación en Kareh: andadores, fajas lumbares, sillas de ruedas, y más.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="./css/estilo.css">
   <link rel="stylesheet" href="./css/carrito.css">
-  <title>Productos</title>
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="./img/logo-kareh-transparencia.png" alt="Logo de Kareh" />
+      <a href="./index.html" title="Volver al inicio de Kareh">
+        <img src="./img/logo-kareh-transparencia.png" alt="Logo de Kareh - Tienda de Rehabilitación" width="150" height="75" />
+      </a>
     </div>
     <div class="titulo">
       <h1 class="h1">Kareh - Tienda Online</h1>
-        <h4>Productos especializados para su rehabilitación.</h4>
+      <h4>Productos especializados para su rehabilitación.</h4>
     </div>
-    <div class="nav">
-      <nav>
-        <ul>
-          <!-- Icono del carrito con contador -->
-          <li class="relative">
-            <a href="#" id="icono-carrito" class="carrito-icono">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="contador-carrito" class="contador-carrito">0</span>
-                
-          <li><a href="./index.html"><i class="fa-solid fa-house"></i></a></li>
-          <li><a href="./api_resenia.html">Reseñas</a></li>
-          <li><a href="./productos.html">Productos</a></li>
-          <li><a href="./contacto.html">Contacto</a></li>
-          <li><a href="./ubicacion.html">Ubicación</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <nav class="nav"> <ul>
+      <li><a href="./index.html" aria-current="page"><i class="fa-solid fa-house" aria-hidden="true"></i> Inicio</a></li>
+      <li><a href="./api_resenia.html"><i class="fa-solid fa-star" aria-hidden="true"></i> Reseñas</a></li>
+      <li><a href="./productos.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i> Productos</a></li>
+      <li><a href="./contacto.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contacto</a></li>
+      <li><a href="./ubicacion.html"><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Ubicación</a></li>
+      </ul>
+    </nav>
+  </header>  
 
   <main>
-    <div class="producto_flex">
+    <div class="producto_flex"> 
+      
       <div class="item_flex">
         <h3>Andador con ruedas</h3>
-        <img src="./img/andador/51oNan7r7SL._AC_.jpg" alt="Andador con ruedas" width="50%">
+        <img src="./img/andador/51oNan7r7SL._AC_.jpg" alt="Andador con ruedas para adultos" width="250" height="250">
         <p>Precio: $10.000,00</p>
         <button class="comprar" data-id="1" data-nombre="Andador con ruedas" data-precio="10000">Comprar</button>
       </div>
-
+  
       <div class="item_flex">
         <h3>Trípode con 4 apoyos</h3>
-        <img src="./img/baton 4 apoyos/baston-4-apoyos-base-pequena.webp" alt="Trípode con 4 apoyos" width="50%">
+        <img src="./img/baton 4 apoyos/baston-4-apoyos-base-pequena.webp" alt="Bastón trípode con 4 puntos de apoyo" width="250" height="250">
         <p>Precio: $15.000,00</p>
         <button class="comprar" data-id="2" data-nombre="Tripode con 4 apoyos" data-precio="15000">Comprar</button>
       </div>
-
+  
       <div class="item_flex">
         <h3>Faja Lumbar</h3>
-        <img src="./img/faja/fr2-11-5d2386bd18fa7950b416490867673124-1024-1024.webp" alt="Faja Lumbar" width="50%">
+        <img src="./img/faja/fr2-11-5d2386bd18fa7950b416490867673124-1024-1024.webp" alt="Faja lumbar de soporte para espalda" width="250" height="250">
         <p>Precio: $20.000,00</p>
         <button class="comprar" data-id="3" data-nombre="Faja Lumbar" data-precio="20000">Comprar</button>
       </div>
-
+  
       <div class="item_flex">
         <h3>Silla de Rueda Deportiva</h3>
-        <img src="./img/silla de rueda deportiva/silla-de-ruedas-deportiva.jpg" alt="Silla de Rueda Deportiva" width="50%">
+        <img src="./img/silla de rueda deportiva/silla-de-ruedas-deportiva.jpg" alt="Silla de ruedas deportiva, ligera y ágil" width="250" height="250">
         <p>Precio: $100.000,00</p>
         <button class="comprar" data-id="4" data-nombre="Silla de rueda deportiva" data-precio="100000">Comprar</button>
       </div>
-
+  
       <div class="item_flex">
         <h3>Conos de Rehabilitación</h3>
-        <img src="./img/conos/conos.png" alt="Conos de Rehabilitación" width="50%">
+        <img src="./img/conos/conos.png" alt="Set de conos para ejercicios de rehabilitación" width="250" height="250">
         <p>Precio: $15.000,00</p>
         <button class="comprar" data-id="5" data-nombre="Conos de Rehabilitacion" data-precio="15000">Comprar</button>
       </div>
-
+  
       <div class="item_flex">
         <h3>Kit Hand Grip</h3>
-        <img src="./img/hand grip/kit de hand grip.png" alt="Kit Hand Grip" width="50%">
+        <img src="./img/hand grip/kit de hand grip.png" alt="Kit de Hand Grip para fortalecimiento de mano" width="250" height="250">
         <p>Precio: $20.000,00</p>
         <button class="comprar" data-id="6" data-nombre="Kit Hand Grip" data-precio="20000">Comprar</button>
       </div>
-
+  
       <div class="item_flex">
         <h3>Tobilleras con Velcro</h3>
-        <img src="./img/tobilleras con velcro/tobilleras negras con velcro.png" alt="Tobilleras con Velcro" width="50%">
+        <img src="./img/tobilleras con velcro/tobilleras negras con velcro.png" alt="Tobilleras con velcro para peso y resistencia" width="250" height="250">
         <p>Precio: $10.000,00</p>
         <button class="comprar" data-id="7" data-nombre="Tobilleras con Velcro" data-precio="10000">Comprar</button>
       </div>
       
       <div class="item_flex">
         <h3>Muletas Ajustables</h3>
-        <img src="./img/muleta ajustable.webp" alt="Muletas Ajustables" width="50%">
+        <img src="./img/muleta ajustable.webp" alt="Par de muletas ajustables para apoyo" width="250" height="250">
         <p>Precio: $15.000,00</p>
         <button class="comprar" data-id="8" data-nombre="Muletas Ajustables" data-precio="15000">Comprar</button>
       </div>
-
-      <div id="carrito">
-        <h2>Carrito de Compras</h2>
-        <p>Total: $<span id="total-carrito">0</span></p>
-        <ul id="lista-carrito"></ul>
-        <div style="text-align: center; margin-top: 20px;">
-          <button id="btnPagar">Pagar</button>
-          <button id="vaciar-carrito">Vaciar Carrito</button>
-        </div>
-      </div>
     </div>
   </main>
+  
+  <div id="carrito">
+    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+    <h2>Carrito de Compras</h2>
+    <p>Total: $<span id="total-carrito">0.00</span></p>
+    <ul id="lista-carrito">
+   
+      <p>El carrito está vacío.</p> <!-- Mensaje inicial si el carrito está vacío -->
+    </ul>
+    <div class="carrito-botones"> 
+      <button id="btnPagar">Pagar</button>
+      <button id="vaciar-carrito">Vaciar Carrito</button>
+    </div>
+  </div>
+</main>
   
   <form action="./index.html" class="volver-form">
     <button type="submit" class="btn-volver">
@@ -117,23 +118,14 @@
 
   <footer>
     <div class="iconos">
-      <i class="fa-brands fa-instagram"></i>
-      <i class="fa-brands fa-tiktok"></i>
-      <i class="fa-brands fa-telegram"></i>
+      <a href="#" aria-label="Síguenos en Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+      <a href="#" aria-label="Síguenos en TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      <a href="#" aria-label="Síguenos en Telegram"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
     </div>
     <p>© 2025 Kareh. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Custom Alert Modal -->
-  <div id="customAlertModal" class="modal-overlay hidden">
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <p id="customAlertMessage"></p>
-      <button id="customAlertOkButton" class="modal-button">OK</button>
-    </div>
-  </div>
-
-  <script src="./js/common.js"></script> <!-- Archivo con showCustomAlert -->
   <script src="./js/tienda.js"></script>
+  <script src="./js/carrito.js"></script>
 </body>
 </html>

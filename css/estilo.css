@@ -1,226 +1,295 @@
 :root {
-  --color-acento: #03cccc;
-  --sombra: 0 4px 10px rgba(0, 0, 0, 0.1);
-  --radio-borde: 8px;
-  --color-texto: #333;
-  --color-primario: #f0f0f0;
+  --color-acento: #03cccc; /* Color principal para branding y elementos interactivos */
+  --color-acento-hover: rgb(0, 150, 150); /* Tono más oscuro para estados hover del acento */
+  --color-texto-principal: #333; /* Color de texto general */
+  --color-texto-secundario: #666; /* Color de texto para descripciones menos importantes */
+  --color-fondo-claro: #f9f9f9; /* Fondo ligero para secciones o tarjetas */
+  --color-fondo-blanco: #fff; /* Fondo blanco puro */
+  --color-borde: #ddd; /* Color para bordes de elementos */
+  --color-sombra: rgba(0, 0, 0, 0.1); /* Sombra estándar para elevación */
+  --color-sombra-hover: rgba(0, 0, 0, 0.15); /* Sombra más pronunciada para hover */
+
+  --radio-borde-base: 8px; /* Radio de borde estándar para elementos */
+  --radio-borde-boton: 5px; /* Radio de borde para botones */
+  --transicion-rapida: 0.3s ease; /* Transición suave para efectos rápidos */
+  
+  --color-boton-primario: #03cccc; /* Color de fondo para botones de acción principal */
+  --color-boton-peligro: #f44336; /* Color de fondo para botones de acción destructiva */
+  --color-boton-peligro-hover: #d32f2f; /* Tono más oscuro para hover de botones de peligro */
+  --color-boton-neutro: #6c757d; /* Color de fondo para botones neutrales */
+  --color-boton-neutro-hover: #5a6268; /* Tono más oscuro para hover de botones neutrales */
 }
 
 body {
-  font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--color-texto); 
-  margin: 0;
-  background-color: #fff;
-  line-height: 1.6;
+  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; /* Fuente principal */
+  font-size: 16px; /* Tamaño de fuente base */
+  line-height: 1.6; /* Altura de línea para mejor legibilidad */
+  color: var(--color-texto-principal); /* Color de texto principal */
+  margin: 0; /* Elimina el margen predeterminado del body */
+  background-color: var(--color-fondo-blanco); /* Fondo blanco para toda la página */
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-acento); /* Color para todos los encabezados */
+  margin-top: 0; /* Elimina margen superior predeterminado */
+  margin-bottom: 0.5em; /* Margen inferior para separar de los párrafos */
+  line-height: 1.2; /* Ajusta la altura de línea de los títulos */
+}
+
+a {
+  color: var(--color-acento); /* Color de enlaces */
+  text-decoration: none; /* Elimina el subrayado predeterminado */
+  transition: color var(--transicion-rapida); /* Transición suave al pasar el ratón */
+}
+
+a:hover {
+  color: var(--color-acento-hover); /* Cambio de color al pasar el ratón */
+}
+
+/* Estilo para el contenedor principal del contenido */
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 20px auto; /* Centra el contenido principal */
+  background-color: var(--color-fondo-blanco);
+  border-radius: var(--radio-borde-base);
+  box-shadow: 0 4px 10px var(--color-sombra); /* Sombra para el contenedor principal */
+}
+
+/* --- Header y Navegación --- */
+/* Estilos para la cabecera del sitio y el menú de navegación. */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  position: sticky;
+  background-color: var(--color-fondo-blanco);
+  position: sticky; /* Fija el header en la parte superior al hacer scroll */
   top: 0;
-  box-shadow: var(--sombra);
-  z-index: 1000;
+  box-shadow: 0 4px 10px var(--color-sombra);
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
   padding: 1rem 2rem;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  gap: 1rem; /* Espacio entre los elementos flex del header */
 }
 
 .logo img {
   max-width: 150px;
+  height: auto;
 }
 
 .titulo {
   font-weight: 400;
-  text-align: center; 
+  text-align: center;
+  flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
 }
 
-.h1 {
-  color: var(--color-acento); 
-  transition: color 0.3s ease;
+.titulo .h1 {
+  color: var(--color-acento);
+  transition: color var(--transicion-rapida);
 }
 
-.h1:hover {
-  color: rgb(0, 204, 255);
+.titulo .h1:hover {
+  color: var(--color-acento-hover);
+}
+
+.titulo h4 {
+  color: var(--color-texto-principal);
+  font-weight: normal;
+  margin-top: 0.2rem;
 }
 
 .nav ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.nav li {
-  margin: 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.0rem; /* Espacio entre los ítems de navegación */
 }
 
 .nav a {
-  text-decoration: none;
-  color: var(--color-texto);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espacio entre icono y texto */
+  padding: 0.5rem 1rem;
+  border-radius: var(--radio-borde-base);
+  transition: background-color var(--transicion-rapida), color var(--transicion-rapida);
+  color: var(--color-texto-principal);
   font-weight: bold;
-  padding: 8px 12px;
-  border-radius: var(--radio-borde);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a[aria-current="page"] {
   background-color: var(--color-acento);
   color: white;
 }
 
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  margin-top: 30px;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+.nav a[aria-current="page"] i {
+  color: white; /* Asegura que el icono también cambie de color en el estado activo */
 }
 
-footer .iconos {
-  margin-bottom: 15px;
-}
-
-footer .iconos i {
-  font-size: 28px;
-  margin: 0 10px;
-  color: white;
-  transition: color 0.3s ease;
-}
-
-footer .iconos i:hover {
-  color: var(--color-acento);
-}
-
-main {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;
-}
-
-section {
-  background-color: white;
-  padding: 30px;
-  border-radius: var(--radio-borde);
-  box-shadow: var(--sombra);
-  margin-bottom: 30px;
-}
-
-h2 {
-  color: var(--color-acento);
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 2em;
-}
-
-p {
-  color: var(--color-texto);
-  text-align: center;
-  margin-bottom: 15px;
-}
+/* --- Secciones Específicas del Index --- */
 
 .panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .panel p {
   font-size: 1.2em;
   margin-bottom: 20px;
+  color: var(--color-texto-principal);
 }
 
 .panel .imagen img {
   max-width: 100%;
   height: auto;
-  border-radius: var(--radio-borde);
-  box-shadow: var(--sombra);
+  border-radius: var(--radio-borde-base);
+  box-shadow: 0 4px 10px var(--color-sombra);
 }
 
 .contenedor-video {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  border-radius: var(--radio-borde);
-  box-shadow: var(--sombra);
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 .contenedor-video video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radio-borde-base);
+  box-shadow: 0 4px 10px var(--color-sombra);
 }
 
-.producto_flex {
+#servicios {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#servicios h2 {
+  margin-bottom: 25px; /* Espacio debajo del título de servicios */
+}
+
+.servicios-grid {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 20px; /* Espacio entre las tarjetas de servicio */
+  flex-wrap: wrap;
+}
+
+.servicio-card {
+  background-color: #e0f7fa; /* Tono claro para las tarjetas de servicio */
   padding: 20px;
-  background-color: var(--color-primario);
-  border-radius: var(--radio-borde);
-  box-shadow: var(--sombra);
+  border-radius: var(--radio-borde-base);
+  box-shadow: 0 4px 8px var(--color-sombra);
+  width: 280px;
+  text-align: center;
+  transition: transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.servicio-card:hover {
+  transform: translateY(-5px); /* Efecto de elevación */
+  box-shadow: 0 6px 15px var(--color-sombra-hover);
+}
+
+.servicio-card h3 {
+  color: var(--color-acento);
+  margin-bottom: 10px;
+}
+
+.servicio-card p {
+  color: var(--color-texto-principal);
+  font-size: 0.95em;
+}
+
+/* --- Cuadrícula de Productos --- */
+.producto_flex {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 20px;
+  padding: 20px;
 }
 
 .item_flex {
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: var(--radio-borde);
-  padding: 20px;
+  flex: 1 1 280px; /* Define cómo se expande/contrae y el tamaño base de cada item */
+  box-shadow: 0 4px 8px var(--color-sombra);
+  border-radius: var(--radio-borde-base);
+  padding: 15px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex: 1 1 calc(25% - 25px);
-  max-width: calc(25% - 25px);
+  background-color: var(--color-fondo-blanco);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-direction: column; /* Organiza el contenido de la tarjeta verticalmente */
+  justify-content: space-between; /* Distribuye el espacio para empujar el botón "Comprar" hacia abajo */
+  transition: transform var(--transicion-rapida);
+  min-width: 250px; /* Ancho mínimo para cada tarjeta */
+  max-width: 300px; /* Ancho máximo para cada tarjeta */
 }
 
 .item_flex:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.item_flex h3 {
-  color: var(--color-texto);
-  margin-bottom: 15px;
-  font-size: 1.5em;
+  box-shadow: 0 6px 15px var(--color-sombra-hover);
 }
 
 .item_flex img {
   max-width: 100%;
   height: auto;
-  border-radius: var(--radio-borde);
+  border-radius: var(--radio-borde-boton);
+  margin-bottom: 10px;
+}
+
+.item_flex h3 {
+  font-size: 1.2em;
+  color: var(--color-texto-principal);
+  margin-bottom: 5px;
+}
+
+.item_flex h4 {
+  font-size: 1.1em;
+  color: var(--color-acento);
   margin-bottom: 15px;
 }
 
 .item_flex .comprar {
-  background-color: var(--color-acento);
+  background-color: var(--color-boton-primario);
   color: white;
-  font-size: 1.1rem;
-  padding: 10px 20px;
   border: none;
-  border-radius: 25px;
+  padding: 10px 20px;
+  border-radius: var(--radio-borde-boton);
   cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color var(--transicion-rapida);
+  margin-top: auto; /* Empuja el botón hacia la parte inferior */
 }
 
 .item_flex .comprar:hover {
-  background-color: #02a0a0;
-  transform: translateY(-2px);
+  background-color: var(--color-acento-hover);
+}
+
+/* --- Formularios (Contacto y Compra) --- */
+/* Estilos generales para formularios y sus elementos. */
+.contacto-form-section, .formulario-compra {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--color-fondo-blanco); 
+  border-radius: var(--radio-borde-base);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+  transition: box-shadow var(--transicion-rapida); 
+}
+
+.contacto-form-section:hover, .formulario-compra:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); 
+}
+
+.contacto-form-section h2, .formulario-compra h2 {
+  text-align: center;
+  margin-bottom: 30px; 
+  font-size: 2.2em; 
+  color: var(--color-acento);
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
 }
 
 form {
@@ -230,279 +299,120 @@ form {
   background-color: white;
   border-radius: var(--radio-borde);
   box-shadow: var(--sombra);
-  display: flex;
+  display: flex
+;
   flex-direction: column;
   gap: 15px;
 }
 
-form label {
-  font-weight: bold;
-  color: var(--color-texto);
-  margin-bottom: 5px;
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="tel"],
-form textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: var(--radio-borde);
-  font-size: 1em;
-  box-sizing: border-box; 
-}
-
-form input:focus,
-form textarea:focus {
-  border-color: var(--color-acento);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(3, 204, 204, 0.2);
-}
-
-form button[type="submit"] {
-  background-color: var(--color-acento);
-  color: white;
-  font-size: 1.2rem;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-form button[type="submit"]:hover {
-  background-color: #02a0a0;
-  transform: translateY(-2px);
-}
-
-iframe {
-  width: 100%;
-  height: 450px;
-  border: none;
-  border-radius: var(--radio-borde);
-  box-shadow: var(--sombra);
-}
-
-.resenia {
-  text-align: center;
-}
-
-.resenia img {
-  border-radius: 50%;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.resenia p {
-  font-size: 1.1em;
-  color: var(--color-texto);
-  margin-bottom: 10px;
-}
-
-.resenia .btn-danger {
-  background-color: var(--color-acento);
-  color: white;
-  font-size: 1.1rem;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-.resenia .btn-danger:hover {
-  background-color: #02a0a0;
-  transform: translateY(-2px);
-}
-
-#detalle {
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
-  padding: 25px;
-  border-radius: var(--radio-borde);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-}
-
-#detalle h3 {
-  color: var(--color-acento);
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 1.8em;
-}
-
-#detalle strong {
+/* Estilos para el botón de envío del formulario */
+button[type="submit"], #botonEnviar {
   display: block;
-  text-align: right;
-  font-size: 1.5em;
-  margin-top: 20px;
-  color: var(--color-texto);
+  width: 100%;
+  padding: 16px 25px; /* Más padding para un botón más grande y fácil de tocar */
+  background-color: var(--color-boton-primario);
+  color: white;
+  border: none;
+  border-radius: var(--radio-borde-base); /* Mantener el radio de borde base */
+  font-size: 1.2em; /* Fuente más grande para el botón */
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra más fuerte para el botón */
+  transition: background-color var(--transicion-rapida), transform 0.2s ease, box-shadow var(--transicion-rapida);
+  margin-top: 30px; /* Más espacio superior */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  letter-spacing: 0.5px; /* Espaciado entre letras */
 }
 
+button[type="submit"]:hover, #botonEnviar:hover {
+  background-color: var(--color-acento-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
+}
+
+/* --- Botón "Volver al inicio" --- */
 .volver-form {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
+  text-align: center;
+  margin: 30px auto;
+  max-width: 400px;
 }
 
 .btn-volver {
-  background-color: #03cccc;
+  background-color: var(--color-boton-neutro);
   color: white;
-  font-size: 1.1rem;
-  padding: 12px 24px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 30px;
+  border-radius: var(--radio-borde-base);
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  font-size: 1em;
   font-weight: bold;
+  transition: background-color var(--transicion-rapida);
 }
 
 .btn-volver:hover {
-  background-color: #02a0a0;
-  transform: translateY(-2px);
+  background-color: var(--color-boton-neutro-hover);
 }
 
+/* --- Pie de Página (Footer) --- */
+/* Estilos para el pie de página de la web. */
+footer {
+  background-color: var(--color-acento);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  box-shadow: 0 -2px 10px var(--color-sombra);
+}
+
+footer .iconos {
+  margin-bottom: 15px;
+}
+
+footer .iconos a {
+  color: white;
+  font-size: 1.8em;
+  margin: 0 10px;
+  transition: color var(--transicion-rapida);
+}
+
+footer .iconos a:hover {
+  color: rgb(220, 255, 255);
+}
+
+footer p {
+  margin: 0;
+  font-size: 1em;
+}
+/* --- Media Queries para Responsividad --- */
+/* Tabletas y pantallas medianas */
 @media (max-width: 768px) {
   header {
-    flex-direction: column;
+    flex-direction: column; /* Apila elementos del header verticalmente */
     padding: 1rem;
+    text-align: center;
   }
 
   .nav ul {
-    flex-direction: column;
-    margin-top: 15px;
-  }
-
-  .nav li {
-    margin: 8px 0;
-  }
-
-  .item_flex {
-    flex: 1 1 calc(50% - 25px); 
-    max-width: calc(50% - 25px);
-  }
-
-  form {
-    padding: 20px;
-  }
-
-  form button[type="submit"] {
-    padding: 12px 20px;
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo img {
-    max-width: 100px;
-  }
-
-  .titulo h1 {
-    font-size: 1.8em;
-  }
-
-  .titulo h4 {
-    font-size: 0.9em;
+    flex-direction: column; /* Apila ítems de navegación verticalmente */
+    gap: 0.5rem;
+    margin-top: 1rem;
   }
 
   .nav a {
-    font-size: 0.9em;
-    padding: 6px 10px;
+    width: 100%; /* Los enlaces ocupan todo el ancho disponible */
+    justify-content: center; /* Centra el texto y el icono */
   }
 
-  .item_flex {
-    flex: 1 1 100%; 
-    max-width: 100%;
+  main {
+    padding: 15px;
+    margin: 15px auto;
   }
 
-  #btnPagar, #vaciar-carrito, .btn-volver {
-    font-size: 1em;
-    padding: 10px 20px;
+  .servicio-card {
+    width: 100%; /* Las tarjetas de servicio ocupan todo el ancho */
   }
 
-  footer .iconos i {
-    font-size: 24px;
+  .contacto-form-section, .formulario-compra {
+    padding: 20px;
   }
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.modal-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    position: relative;
-    transform: translateY(-20px);
-    transition: transform 0.3s ease;
-}
-
-.modal-overlay.show .modal-content {
-    transform: translateY(0);
-}
-
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #aaa;
-}
-
-.close-button:hover {
-    color: #666;
-}
-
-#customAlertMessage {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
-    color: var(--color-texto);
-}
-
-.modal-button {
-    background-color: var(--color-acento);
-    color: white;
-    font-size: 1.1rem;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.modal-button:hover {
-    background-color: #02a0a0;
-    transform: translateY(-2px);
 }

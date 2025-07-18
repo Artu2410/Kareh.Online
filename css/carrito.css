@@ -1,79 +1,144 @@
 #carrito {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: var(--radio-borde);
-    padding: 20px;
-    margin-top: 30px;
-    box-shadow: var(--sombra);
-  }
-  
-  #carrito h2 {
-    text-align: center;
-    color: var(--color-acento);
-    margin-bottom: 20px;
-  }
-  
-  #lista-carrito {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-  }
-  
-  #lista-carrito li {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    border-radius: var(--radio-borde);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.1em;
-    color: var(--color-texto);
-  }
-  
-  #lista-carrito li button {
-      background-color: #f44336;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 0.9em;
-      transition: background-color 0.3s ease;
-  }
-  
-  #lista-carrito li button:hover {
-      background-color: #d32f2f;
-  }
-  
-  #total-carrito {
-    font-weight: bold;
-    color: var(--color-acento);
-  }
-  
-  #btnPagar, #vaciar-carrito {
-    background-color: #28a745;
-    color: white;
-    font-size: 1.1rem;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    font-weight: bold;
-    margin: 10px;
-  }
-  
-  #vaciar-carrito {
-    background-color: #dc3545;
-  }
-    #btnPagar:hover, #vaciar-carrito:hover {
-        background-color: #218838;
-        transform: translateY(-2px);
-    }  
-    #vaciar-carrito:hover {
-        background-color: #c82333;
-        transform: translateY(-2px);
-      }
+  background-color: var(--color-fondo-blanco);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde-base);
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: 0 4px 10px var(--color-sombra);
+}
+
+#carrito i.fa-cart-shopping {
+  display: block;
+  text-align: center;
+  font-size: 2.5em;
+  color: var(--color-acento);
+  margin-bottom: 15px;
+}
+
+#carrito h2 {
+  text-align: center;
+  color: var(--color-acento);
+  margin-bottom: 20px;
+}
+
+#lista-carrito {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#lista-carrito li {
+  background-color: var(--color-fondo-claro);
+  border: 1px solid #eee;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: var(--radio-borde-base);
+  display: flex; /* Habilita flexbox para el contenido del item */
+  justify-content: space-between; /* Distribuye espacio entre elementos */
+  align-items: center; /* Alinea verticalmente los elementos */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  gap: 10px; /* Espacio entre los elementos dentro del li */
+  font-size: 1.1em;
+  color: var(--color-texto-principal);
+}
+
+/* Estilos para el contenedor de control de cantidad */
+.cantidad-control {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espacio entre los botones y la cantidad */
+  margin-left: 15px; /* Espacio a la izquierda del control */
+}
+
+/* Estilos para los botones de aumentar/disminuir cantidad */
+.cantidad-control button {
+  background-color: var(--color-acento); /* Color del acento */
+  color: white;
+  border: none;
+  padding: 3px 8px; /* Pequeño padding para los botones */
+  border-radius: var(--radio-borde-boton);
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: background-color var(--transicion-rapida);
+}
+
+.cantidad-control button:hover {
+  background-color: var(--color-acento-hover);
+}
+
+/* Estilo para el número de cantidad */
+.cantidad-producto {
+  font-weight: bold;
+  min-width: 20px; /* Asegura un ancho mínimo para el número */
+  text-align: center;
+}
+
+/* Estilo para el botón de eliminar producto (X) */
+#lista-carrito li .eliminar-producto {
+  background-color: var(--color-boton-peligro);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: var(--radio-borde-boton);
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color var(--transicion-rapida);
+  margin-left: auto; /* Empuja el botón "X" hacia la derecha */
+}
+
+#lista-carrito li .eliminar-producto:hover {
+  background-color: var(--color-boton-peligro-hover);
+}
+
+/* Estilo para el total del carrito */
+#total-carrito {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+  padding: 10px;
+  background-color: #e9f5eb;
+  border-radius: var(--radio-borde-base);
+  margin: 10px 0;
+  color: var(--color-acento);
+}
+
+/* Contenedor de botones del carrito */
+.carrito-botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Estilos para los botones Pagar y Vaciar Carrito */
+#btnPagar, #vaciar-carrito {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radio-borde-base);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color var(--transicion-rapida), transform 0.2s ease;
+  font-size: 1em;
+}
+
+#btnPagar {
+  background-color: var(--color-boton-primario);
+  color: white;
+}
+
+#btnPagar:hover {
+  background-color: var(--color-acento-hover);
+  transform: translateY(-2px);
+}
+
+#vaciar-carrito {
+  background-color: var(--color-boton-peligro);
+  color: white;
+}
+
+#vaciar-carrito:hover {
+  background-color: var(--color-boton-peligro-hover);
+  transform: translateY(-2px);
+}

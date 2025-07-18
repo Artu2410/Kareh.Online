@@ -13,7 +13,9 @@
 <body>
   <header>
     <div class="logo">
-      <img src="./img/logo-kareh-transparencia.png" alt="Logo de Kareh" />
+      <a href="./index.html" title="Volver al inicio">
+        <img src="./img/logo-kareh-transparencia.png" alt="Logo de Kareh" />
+      </a>
     </div>
     <div class="titulo">
       <h1 class="h1">Kareh - Tienda Online</h1>
@@ -21,11 +23,11 @@
     </div>
     <nav class="nav">
       <ul>
-        <li><a href="./index.html"><i class="fa-solid fa-house"></i></a></li>
-        <li><a href="./api_resenia.html">Reseñas</a></li>
-        <li><a href="./productos.html">Productos</a></li>
-        <li><a href="./contacto.html">Contacto</a></li>
-        <li><a href="./ubicacion.html">Ubicación</a></li>
+        <li><a href="./index.html" aria-current="page"><i class="fa-solid fa-house" aria-hidden="true"></i> Inicio</a></li>
+        <li><a href="./api_resenia.html"><i class="fa-solid fa-star" aria-hidden="true"></i> Reseñas</a></li>
+        <li><a href="./productos.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i> Productos</a></li>
+        <li><a href="./contacto.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contacto</a></li>
+        <li><a href="./ubicacion.html"><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Ubicación</a></li>
       </ul>
     </nav>
   </header>
@@ -34,6 +36,7 @@
     <section>
       <h2>Formulario de Contacto</h2>
       <form action="https://formspree.io/f/mjkyqbap" method="POST">
+        
         <label for="nombre">Nombre completo:</label>
         <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required />
 
@@ -51,6 +54,17 @@
     <button type="submit" class="btn-volver">
       ⬅️ Volver al inicio
     </button>
+    <br>
+  </br>
+  <br>
+  <br>
+</br>
+</br>
+<br>
+</br>
+<br>
+  </br>
+
   </form>
   <footer>
     <div class="iconos">
@@ -61,15 +75,5 @@
     <p>© 2025 Kareh. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Custom Alert Modal -->
-  <div id="customAlertModal" class="modal-overlay hidden">
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <p id="customAlertMessage"></p>
-      <button id="customAlertOkButton" class="modal-button">OK</button>
-    </div>
-  </div>
-
-  <script src="./js/common.js"></script> <!-- Archivo con showCustomAlert -->
 </body>
 </html>
